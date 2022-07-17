@@ -6,3 +6,4 @@ anitopy
 instagrapi
 cloudscraper
 beautifulsoup4
+telegraph
