@@ -1,0 +1,8 @@
+pyrogram
+tgcrypto
+uvloop
+wget
+anitopy
+instagrapi
+cloudscraper
+beautifulsoup4
