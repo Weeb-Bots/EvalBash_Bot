@@ -31,7 +31,7 @@ FREE_USER_MAX_FILE_SIZE = 2097152000
 telegraph = Telegraph()
 telegraph.create_account(short_name='Kai84', author_name="Keqing Izuka")
 
-@app.on_message(filters.user(USR) & filters.coomand("pip", prefixes=prefixes)
+@app.on_message(filters.user(USR) & filters.coomand("pip", prefixes=prefixes))
 async def bash_cmd(m: Message, bot):
   text = m.text
   if m.text is None:
@@ -48,12 +48,10 @@ async def bash_cmd(m: Message, bot):
     )["path"]
   await m.reply_text(f"Successfully Installed [{text}](https://telegra.ph/{help})")
 
-async def eval(filters.user(USR) & filters.coomand("eval", prefixes=prefixes):
+@app.on_message(filters.user(USR) & filters.coomand("eval", prefixes=prefixes))
+async def eval (message: Message, bot)
     status_message = await message.reply_text("Processing ...")
     cmd = message.text.split(" ", maxsplit=1)[1]
-    reply_to_id = message.id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.id
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -94,7 +92,7 @@ async def eval(filters.user(USR) & filters.coomand("eval", prefixes=prefixes):
           document="eval.txt",
           caption=cmd,
           disable_notification=True,
-          reply_to_message_id=reply_to_id,
+          quote=True,
         )
         os.remove("eval.txt")
         await status_message.delete()
